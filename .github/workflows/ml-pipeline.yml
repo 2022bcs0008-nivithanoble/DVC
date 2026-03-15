@@ -33,7 +33,7 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Pull dataset from DVC
-      run: dvc pull data/housing.csv
+      run: dvc pull data/housing.csv.dvc
 
     - name: Train model
       run: python train.py
