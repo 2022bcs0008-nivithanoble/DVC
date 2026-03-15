@@ -51,7 +51,7 @@ jobs:
       run: |
         DATASET_SIZE=$(python -c "import pandas as pd; df=pd.read_csv('data/data_partial.csv'); print(len(df))")
 
-        RMSE=$(python -c "import json,math; m=json.load(open('outputs/metrics/results.json')); print(math.sqrt(m['MSE']))")
+        MSE=$(python -c "import json,math; m=json.load(open('outputs/metrics/results.json')); print(math.sqrt(m['MSE']))")
 
         R2=$(python -c "import json; m=json.load(open('outputs/metrics/results.json')); print(m['R2'])")
 
@@ -62,7 +62,7 @@ jobs:
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Training Metrics**" >> $GITHUB_STEP_SUMMARY
         echo "- MSE: $MSE" >> $GITHUB_STEP_SUMMARY
-        echo "- R²: $R2" >> $GITHUB_STEP_SUMMARY
+        echo "- R2: $R2" >> $GITHUB_STEP_SUMMARY
 
     - name: Compare metrics
       run: |
