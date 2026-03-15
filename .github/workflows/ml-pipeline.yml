@@ -51,7 +51,7 @@ jobs:
 
     - name: Write Results to GitHub Summary
       run: |
-        DATASET_SIZE=$(python -c "import pandas as pd; df=pd.read_csv('data/data_partial.csv'); print(len(df))")
+        DATASET_SIZE=$(python -c "import pandas as pd; df=pd.read_csv('data/housing.csv'); print(len(df))")
 
         MSE=$(python -c "import json,math; m=json.load(open('outputs/metrics/results.json')); print(math.sqrt(m['MSE']))")
 
