@@ -32,6 +32,8 @@ jobs:
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
         aws-region: ${{ secrets.AWS_REGION }}
 
+    - name: Pull dataset from DVC
+      run: 
 
     - name: Train model
       run: python train.py

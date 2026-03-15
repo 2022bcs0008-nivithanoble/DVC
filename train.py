@@ -5,7 +5,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.ensemble import RandomForestRegressor
 
 
-DATA_PATH = "data/data_partial.csv"
+DATA_PATH = "data/housing.csv"
 MODEL_PATH = "outputs/model/model.pkl"
 METRICS_PATH = "outputs/metrics/results.json"
 
