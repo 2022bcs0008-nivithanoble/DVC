@@ -1,2 +1,8 @@
+[core]
+    remote = s3remote_bcs8
 ['remote "local"']
     url = C:\Users\DNXN\OneDrive\05 School\IIIT\B Tech CSE\Semester-8\dvcDemoRepo
+['remote "bcs8_s3_remote"']
+    url = s3://bcs8-dvc/data-dvc
+['remote "s3remote_bcs8"']
+    url = s3://bcs8-dvc/data-dvc
