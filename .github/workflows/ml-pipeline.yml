@@ -45,30 +45,15 @@ jobs:
         path: outputs/metrics/
 
     - name: Write Results to GitHub Summary
+      run: 
+
+    - name: Write Results to GitHub Summary
       run: |
-        DATASET_SIZE=$(python - <<EOF 
-        import pandas as pd
-        df = pd.read_csv("data/data_partial.csv")
-        print(len(df))
-        EOF
-        )
-        
-        RMSE=$(python - <<EOF
-        import json, math
-        with open("outputs/metrics/results.json") as f:
-        m=json.load(f)
-        print(math.sqrt(m["MSE"]))
-        EOF
-        )
+        DATASET_SIZE=$(python -c "import pandas as pd; df=pd.read_csv('data/data_partial.csv'); print(len(df))")
 
-            R2=$(python - <<EOF
-        import json
-        with open("outputs/metrics/results.json") as f:
-            m=json.load(f)
-        print(m["R2"])
-        EOF
-        )
+        RMSE=$(python -c "import json,math; m=json.load(open('outputs/metrics/results.json')); print(math.sqrt(m['MSE']))")
 
+        R2=$(python -c "import json; m=json.load(open('outputs/metrics/results.json')); print(m['R2'])")
 
         echo "## Result Version 1" >> $GITHUB_STEP_SUMMARY
         echo "**Roll No:** 2022BCS0008" >> $GITHUB_STEP_SUMMARY
@@ -76,7 +61,7 @@ jobs:
         echo "**Dataset Size (Training Samples):** $DATASET_SIZE" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Training Metrics**" >> $GITHUB_STEP_SUMMARY
-        echo "- RMSE: $RMSE" >> $GITHUB_STEP_SUMMARY
+        echo "- MSE: $MSE" >> $GITHUB_STEP_SUMMARY
         echo "- R²: $R2" >> $GITHUB_STEP_SUMMARY
 
     - name: Compare metrics
